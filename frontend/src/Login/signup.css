@@ -1,0 +1,80 @@
+.body1{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background: linear-gradient(135deg, #dff1fa, #0a3083);
+}
+.container1{
+    width: 40%;
+    height: 90%;
+    position: absolute;
+    margin-top: 2%;
+    margin-left: 30%;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 1%;
+    border-radius: 20px;
+}
+.container1 h1{
+    text-align: center ;
+    margin-bottom: 7%;
+}
+.signupForm{
+    margin-top: 0;
+}
+.signupForm .input1{
+    display: flex;
+    width: 78%;
+    margin: 0 10%;
+    background-color: transparent;
+    height: 40px;
+    margin-top: 2%;
+}
+.input1 .text{
+    height: 90%;
+    width: 100%;
+}
+.input1 .text .in2{
+    border: none;
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+.input1 .text #togglePassword1, .input1 .text #togglePassword2{
+    margin-left: 10px;
+    padding-left: 10px;
+}
+.signupbtn{
+    margin: 5% 35%;
+    background-color: rgb(3, 56, 117);
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 1% 2.5%;
+    border-radius: 20px;
+}
+
+.input1.checkbox{
+    margin-top: -10px;
+}
+.input1.checkbox input{
+    
+    cursor: pointer;
+}
+.input1.checkbox p{
+    margin-top: 8px;
+    margin-left: 5px;
+    font-weight: 500;
+}
+.h3{
+    margin-left: 13%;
+    text-align: left;
+}
+.error-message{
+    color: red;
+    margin-top: 2px;
+    font-size: 14px;
+    font-weight: 500;
+}

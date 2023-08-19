@@ -1,0 +1,90 @@
+.body{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background: linear-gradient(135deg, #dff1fa, #2653cf);
+}
+.container0 {
+    display: block;
+    width: 400px;
+    height: 400px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 4%;
+    top: 10%;
+    left: 30%;
+    border-radius: 20px;
+    position: absolute;
+}
+
+.container0 h1 {
+    text-align: center;
+    margin-bottom: 20px; /* Adjusted for better spacing */
+}
+.loginForm{
+    margin-top: 0;
+    height: 80%;
+}
+.loginForm .input0 {
+    display: flex;
+    width: 80%;
+
+    margin: 10%; /* Use specific units for margin */
+    height: 40px;
+}
+
+.input0 .icon {
+    width: 40px;
+    height: 100%;
+    margin: 0;
+    background-color: transparent;
+}
+
+.icon img {
+    width: 100%;
+}
+
+.input0 .text {
+    height: 90%;
+    width: 100%;
+}
+
+.input0 .text .in1{
+    border: none;
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+
+.input0 .text #togglePassword {
+    margin-left: 0px;
+    padding-left: 10px;
+}
+
+.loginbtn {
+    margin: 10% auto;
+    background-color: rgb(3, 56, 117);
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 2% 8%;
+    display: block;
+    border-radius: 25px;
+}
+.loginbtn:hover{
+    background-color: rgb(21, 87, 161);
+}
+#link{
+    margin-left: 20%;
+    font-size: 15px;
+}
+.link2{
+    font-size: 14px;
+    color: blue;
+    margin-left: 5%;
+}
+.link2:hover{
+    color: rgb(86, 26, 155);
+}
