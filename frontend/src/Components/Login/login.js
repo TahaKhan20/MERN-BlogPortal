@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import './login.css'; // Make sure the path to your CSS file is correct
-export default function Login() {
+export default function Login({setuserName, setuserEmail}) {
     const [credentials, setCredentials] = useState({ email: '', password: '' });
     const navigate = useNavigate();
     const [error, setError] = useState(false);
@@ -24,6 +24,9 @@ export default function Login() {
         const json = await response.json();
         if(json.success){
             navigate('/home');
+            setuserName(json.name);
+            setuserEmail(json.email);
+            console.log(json.email);
         }
         else{
             setError(true);
@@ -65,6 +68,7 @@ export default function Login() {
                             placeholder="Enter Email"
                             value={credentials.email}
                             onChange={onChange}
+                            required
                             className='in1'
                             name="email"
                         />
@@ -89,7 +93,7 @@ export default function Login() {
                         <i className="far fa-eye" id="togglePassword" style={{ marginLeft: '-52px', cursor: 'pointer' }}></i>
                     </div>
                 </div>
-                {error && <p style={{ color: 'red', fontSize: '15px', marginLeft: '150px' }}>{message}</p>}
+                {error && <p style={{ color: 'red', fontSize: '15px', marginLeft: '20px' }}>{message}</p>}
                 <button type="submit" className='loginbtn'>Login</button>
                 <span id='link'>Not a member?</span>
                 <Link className='link2' to='../signup'>Create New Account</Link>

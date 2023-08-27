@@ -3,6 +3,105 @@ const User = require('../models/Users');
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
 
+router.put('/:name/like/:id', async (req, res) => {
+    const { name, id } = req.params;
+  
+    try {
+      const user = await User.findOne({ name });
+  
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+      let updatedUser;
+      if (user.liked.includes(id)) {
+        updatedUser = await User.findOneAndUpdate(
+            { name },
+            { $pull: { liked: id } },
+            { new: true } // This option returns the updated document
+          );
+    
+      }
+      else{
+      updatedUser = await User.findOneAndUpdate(
+        { name },
+        { $push: { liked: id } },
+        { new: true } // This option returns the updated document
+      );
+      }
+      if (!updatedUser) {
+        return res.status(404).json({ error: 'Failed to update user' });
+      }
+  
+      res.json({ success: true });
+    } catch (error) {
+      console.error('Error updating user liked blogs:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+  
+router.get('/:name/liked', async (req, res) => {
+    const { name } = req.params;
+    try {
+        const user = await User.findOne({ name });
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+        const liked = user.liked;
+        res.json(liked);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+router.get('/:name/get', async (req, res) => {
+    const { name } = req.params;
+
+    try {
+        const user = await User.findOne({ name });
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        const userData = {
+            name: user.name,
+            email: user.email,
+            password: user.password,
+            education: user.education,
+            interests: user.interests
+        };
+        res.json(userData);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+router.put('/:name/edit', [
+    body('name').trim().isLength({ min: 4 }).withMessage('Enter a valid name'),
+    body('email').trim().isEmail().withMessage('Enter a valid email'),
+    body('password').trim().isLength({ min: 5 }).withMessage('Password length must be at least 5'),
+    body('education').trim(),
+    body('interests').isArray()
+], async (req, res) => {
+    const { name } = req.params;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    try {
+        const user = await User.findOne({ name });
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        await user.updateOne(req.body);
+
+        res.json({ success: true });
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 router.post('/signup',[
     body('name').trim().isLength({ min: 4 }).withMessage('Enter a valid name'),
     body('email').trim().isEmail().withMessage('Enter a valid email'),
@@ -12,7 +111,6 @@ router.post('/signup',[
     let success1 = false;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        console.log(errors);
         return res.status(400).json({success1, errors: errors.array() });
     }
 
@@ -47,7 +145,6 @@ router.post('/login',[
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
-    console.log(req.body);
     let success = false;
     const email = req.body.email;
     const password = req.body.password;
@@ -66,7 +163,8 @@ router.post('/login',[
         
         }
         success = true;
-        res.json({success});
+        res.json({ name: user.name, email: user.email, success })
+        
     }
     }
     catch (error){

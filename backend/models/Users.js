@@ -21,8 +21,10 @@ const UserSchema = new Schema({
     interests: {
         type: [String],
         required: true
+    },
+    liked: {
+        type: [Number]
     }
-    
 });
 const User = mongoose.model('users', UserSchema);
 User.createIndexes();

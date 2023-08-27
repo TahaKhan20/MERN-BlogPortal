@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './signup.css'; // Make sure the path to your CSS file is correct
 import { useNavigate } from 'react-router-dom';
+
 export default function SignUp() {
     const [showPassword1, setShowPassword1] = useState(false);
     const [showPassword2, setShowPassword2] = useState(false);
@@ -53,7 +54,7 @@ export default function SignUp() {
         setJson(json); // Store response JSON in state
 
         if(json.success1){
-            navigate('/home');
+            navigate('/');
         }
         else{
             setError(true);
