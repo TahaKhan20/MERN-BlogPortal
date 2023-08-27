@@ -1,0 +1,75 @@
+
+.cr{
+  display: block;
+  padding: 5px 10px;
+  background-color: rgb(13, 175, 13);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 5px;
+  right: 10%;
+  top: 10%;
+  position: absolute;
+}
+.in{
+    display: flex;
+    position: fixed;
+    background-color: transparent;
+    width: 100%;
+    height: 40px;
+    bottom: 10px;
+    left: 20px;
+  }
+.in .create {
+    width: 72%;
+    padding: 1% 1.5%;
+    font-size: 16px;
+    background-color: white;
+    bottom: 20px;
+    margin-left: 0.5%;
+    border: 0.5px solid black;
+    border-radius: 10px;
+    outline: none;
+
+  }
+.in .btns {
+    border-radius: 18px;
+    padding: 0px 1%;
+    font-size: 13px;
+    background-color: blue;
+    color: white;
+    outline: none;
+    border: 1px solid transparent;
+    margin: 0 0.1%;
+  }
+  
+  .cont1 {
+    width: 80%;
+    height: 400px;
+    margin: 0px auto;
+    margin-top: 8%;
+    padding: 20px;
+    overflow: auto;
+    text-align: center;
+  }
+  
+  .cont1 h1 {
+    font-size: 25px;
+    color: black;
+    margin-bottom: 10px;
+  
+  }
+  
+  .cont1 p {
+    font-size: 20px;
+    color: #000;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .cont1 img {
+    max-height: 250px;
+    margin: 0 auto;
+  }
+  
